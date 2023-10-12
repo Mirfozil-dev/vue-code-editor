@@ -8,7 +8,7 @@ export const useStore = defineStore(STORE_NAME, {
     files: useStorage('files', [], localStorage),
     showModal: false,
     selectedFile: null,
-    changingFile: false
+    changingFile: null
   }),
   actions: {
     toggleModal() {
@@ -41,7 +41,9 @@ export const useStore = defineStore(STORE_NAME, {
     },
     changeFileName(newFileName) {
       const i = this.files.findIndex(e => e.id === this.changingFile)
+      console.log(i);
       this.files[i].fileName = newFileName
+      this.changingFile = null
     }
   },
 })

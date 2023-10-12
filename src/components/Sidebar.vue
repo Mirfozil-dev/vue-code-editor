@@ -43,7 +43,7 @@
     :title="changingFile ? 'Change file name' : 'Add file'"
     :show-modal="showModal"
     v-model:fileName="fileName"
-    @save="changingFile ? changeFileName(fileName) : addNewFile()"
+    @save="onSave()"
     @close="store.toggleModal()"
   />
 </template>
@@ -62,12 +62,14 @@ const dialog = useDialog()
 
 const fileName = ref('')
 
-function addNewFile() {
+function onSave() {
+  //  Validation on empty input
   if (fileName.value && fileName.value !== '') {
-    store.addNewFile(fileName.value)
+    changingFile.value ? store.changeFileName(fileName.value) : store.addNewFile(fileName.value)
     fileName.value = ''
     store.toggleModal()
   } else {
+  //  Error message 
     dialog.error({
       title: 'Error',
       content: 'Enter file name!',
@@ -77,21 +79,9 @@ function addNewFile() {
   
 }
 function setChangeFileModal(file) {
+  // Setting up a changing file name modal window
   store.setChangingFile(file.id)
   fileName.value = file.fileName
   store.toggleModal()
-}
-function changeFileName() {
-  if (fileName.value && fileName.value !== '') {
-    store.changeFileName(fileName.value)
-    fileName.value = ""
-    store.toggleModal()
-  } else {
-    dialog.error({
-      title: 'Error',
-      content: 'Enter file name!',
-      positiveText: 'Ok',
-    })
-  }
 }
 </script>

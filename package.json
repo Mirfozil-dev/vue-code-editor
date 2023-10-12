@@ -1,0 +1,26 @@
+{
+  "name": "vue-redactor",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@vueuse/core": "^10.5.0",
+    "codemirror": "^6.0.1",
+    "pinia": "^2.1.6",
+    "vue": "^3.3.4",
+    "vue-codemirror": "^6.1.1"
+  },
+  "devDependencies": {
+    "@vicons/ionicons5": "^0.12.0",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "naive-ui": "^2.35.0",
+    "vfonts": "0.0.3",
+    "vite": "^4.4.9"
+  }
+}
